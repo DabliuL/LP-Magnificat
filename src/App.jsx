@@ -75,6 +75,13 @@ const ButterflyIcon = ({ className = "w-12 h-12" }) => (
   </svg>
 );
 
+const getAssetUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('#')) return path;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${import.meta.env.BASE_URL}${cleanPath}`;
+};
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedFeed, setSelectedFeed] = useState('all');
@@ -164,7 +171,7 @@ function App() {
         <div className="header-container">
           {/* Logo container */}
           <a href="#" className="logo-link">
-            <img src="/magnificat_logo_v3.png" alt="Logo Magnificat" style={{ width: '40px', height: '40px', objectFit: 'contain', mixBlendMode: 'multiply' }} />
+            <img src={getAssetUrl("/magnificat_logo_v3.png")} alt="Logo Magnificat" style={{ width: '40px', height: '40px', objectFit: 'contain', mixBlendMode: 'multiply' }} />
             <div className="logo-text-wrapper">
               <span className="logo-title">
                 Magnificat
@@ -323,7 +330,7 @@ function App() {
             <div className="about-image-wrapper" style={{ maxWidth: '380px', width: '100%' }}>
               <div className="about-image-frame" style={{ borderRadius: '0px 120px 0px 120px', border: '2px solid var(--color-gold)' }}>
                 <img 
-                  src="/rafaela_sitting.jpg" 
+                  src={getAssetUrl("/rafaela_sitting.jpg")} 
                   alt="Rafaela Beatriz - Estrategista de Mídias Sociais" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -408,7 +415,7 @@ function App() {
                 {/* Main Asymmetric Leaf Shape Container */}
                 <div className="about-image-frame">
                   <img 
-                    src="/rafaela_portrait.jpg" 
+                    src={getAssetUrl("/rafaela_portrait.jpg")} 
                     alt="Rafaela Beatriz - Social Media &amp; Fotógrafa" 
                   />
                 </div>
@@ -521,7 +528,7 @@ function App() {
               >
                 <div className="feed-header">
                   <div className="feed-profile">
-                    <img src="/maua_logo.jpg" alt="Logo Mauá Tur" className="feed-avatar" style={{ objectFit: 'cover' }} />
+                    <img src={getAssetUrl("/maua_logo.jpg")} alt="Logo Mauá Tur" className="feed-avatar" style={{ objectFit: 'cover' }} />
                     <div className="feed-info">
                       <div className="feed-username">{feedsData.maua.logo}</div>
                       <div className="feed-category">Turismo &amp; Lazer</div>
@@ -555,7 +562,7 @@ function App() {
                           <span>{post.text}</span>
                         </div>
                       ) : (
-                        <img src={post.bg} alt={post.title} />
+                        <img src={getAssetUrl(post.bg)} alt={post.title} />
                       )}
                     </div>
                   ))}
@@ -575,7 +582,7 @@ function App() {
               >
                 <div className="feed-header">
                   <div className="feed-profile">
-                    <img src="/lunaris_logo.jpg" alt="Logo Studio Lunaris" className="feed-avatar" style={{ objectFit: 'cover' }} />
+                    <img src={getAssetUrl("/lunaris_logo.jpg")} alt="Logo Studio Lunaris" className="feed-avatar" style={{ objectFit: 'cover' }} />
                     <div className="feed-info">
                       <div className="feed-username">{feedsData.lunaris.logo}</div>
                       <div className="feed-category">Estúdio de Pilates</div>
@@ -609,7 +616,7 @@ function App() {
                           <span>{post.text}</span>
                         </div>
                       ) : (
-                        <img src={post.bg} alt={post.title} />
+                        <img src={getAssetUrl(post.bg)} alt={post.title} />
                       )}
                     </div>
                   ))}
@@ -629,7 +636,7 @@ function App() {
               >
                 <div className="feed-header">
                   <div className="feed-profile">
-                    <img src="/lacos_logo.png" alt="Logo Clínica Laços" className="feed-avatar" style={{ objectFit: 'cover' }} />
+                    <img src={getAssetUrl("/lacos_logo.png")} alt="Logo Clínica Laços" className="feed-avatar" style={{ objectFit: 'cover' }} />
                     <div className="feed-info">
                       <div className="feed-username">{feedsData.lacos.logo}</div>
                       <div className="feed-category">Psicologia Clínica</div>
@@ -663,7 +670,7 @@ function App() {
                           <span>{post.text}</span>
                         </div>
                       ) : (
-                        <img src={post.bg} alt={post.title} />
+                        <img src={getAssetUrl(post.bg)} alt={post.title} />
                       )}
                     </div>
                   ))}
@@ -822,7 +829,7 @@ function App() {
             {/* Logo footer */}
             <a href="#" className="footer-logo">
               <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--color-bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: '2px' }}>
-                <img src="/magnificat_logo_v3.png" alt="Logo Magnificat" style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply' }} />
+                <img src={getAssetUrl("/magnificat_logo_v3.png")} alt="Logo Magnificat" style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply' }} />
               </div>
               <div className="logo-text-wrapper" style={{ marginLeft: '0.25rem' }}>
                 <span className="footer-logo-title">
